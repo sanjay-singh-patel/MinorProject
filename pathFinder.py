@@ -80,9 +80,8 @@ def BFS(s, e):
 
         for p in path:
             img[p.y][p.x] = [100,100,100]
+            print("(", p.x, p.y, end=" ), ")
         print("Path Found")
-        for m in path:
-            print("(", m.x, m.y, end=" ), ")
     else:
         print("Path not found")
 
