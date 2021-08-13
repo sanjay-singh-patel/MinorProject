@@ -1,5 +1,6 @@
 import cv2 as cv
 from Search import *
+import numpy as np
 
 # Open CV Initialize
 
@@ -10,19 +11,17 @@ img = cv.cvtColor(img, cv.COLOR_GRAY2BGR)
 
 # Initialize Points
 
-start = Point(398, 351)
-end = Point(433, 457)
+start = (398, 351)
+end = (433, 457)
 
-path = BFS(img, start, end)
+path = astar(img, start, end)
 
 for p in path:
-    print("(", p.x, p.y, end=" ), ")
+    print(p)
     # img[p.y][p.x] = [100,100,100]
 
 
 
-""" 
 cv.imshow("Image", img)
 cv.waitKey(0)
 cv.destroyAllWindows()
-"""
