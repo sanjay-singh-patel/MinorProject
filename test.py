@@ -55,3 +55,4 @@ while k!=113:
     saveRooms(doors)
 
 cv2.destroyAllWindows()
+import creatingqrcode
