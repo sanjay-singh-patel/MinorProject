@@ -2,6 +2,7 @@
 import cv2
 import tkinter as tk
 from tkinter import simpledialog
+import json
 
 ROOT = tk.Tk()
 
@@ -10,6 +11,10 @@ ROOT = tk.Tk()
 top_left_corner=[]
 bottom_right_corner=[]
 doors={}
+
+def saveRooms(doors):
+  with open("Rooms.json", "w") as outfile:
+      json.dump(doors, outfile)
 
 # function which will be called on mouse input
 def selectDoor(action, x, y, flags, *userdata):
@@ -22,12 +27,12 @@ def selectDoor(action, x, y, flags, *userdata):
         ROOT.withdraw()
         # the input dialog
         USER_INP = simpledialog.askstring(title="Test", prompt="What's the Door Name?:")
-        doors.update({door:USER_INP})
+        doors.update({str(door):USER_INP})
         print(doors)
         cv2.imshow("Window",image)
 
 # Read Images
-image = cv2.imread("images/acchi-image.jpg")
+image = cv2.imread("./images/acchi-image.jpg")
 image = cv2.resize(image, (800,400))
 # Make a temporary image, will be useful to clear the drawing
 temp = image.copy()
@@ -46,5 +51,7 @@ while k!=113:
   if (k == 99):
     image= temp.copy()
     cv2.imshow("Window", image)
+  if (k == 115):
+    saveRooms(doors)
 
 cv2.destroyAllWindows()
