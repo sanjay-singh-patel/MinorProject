@@ -3,7 +3,6 @@ import numpy as np
 from grid import gridmaker
 import matplotlib.pyplot as plt
 from pathsolver import solver
-obj=gridmaker(50)
 solve=solver()
 
 
@@ -19,31 +18,19 @@ def line(route):
 
 
 frame=cv2.imread("dept.jpg")
+frame=cv2.resize(frame, (800,400))
 frame=cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
-# th,frame=cv2.threshold(frame,100,255,cv2.THRESH_BINARY)
+th,frame=cv2.threshold(frame,200,255,cv2.THRESH_BINARY)
 frame=cv2.bitwise_not(frame)
 frame=cv2.dilate(frame,None,iterations=5)
-cv2.imshow("frame",frame)
-if(cv2.waitKey(1) & 0XFF==ord('q')):
-    cv2.imwrite("dept.jpg",frame)
 
-cv2.destroyAllWindows()
 
 def main():
     global obj,solve
-    fig,ax=plt.subplots()
-    grid=obj.returnGrid()
-    ax.imshow(grid)
-    plt.show()
-    print("enter start point")
-    s1=int(input())
-    s2=int(input())
-    start=(s1,s2)
-    print("enter end point")
-    s1=int(input())
-    s2=int(input())
-    end=(s1,s2)
-    route=solve.astar(start,end,grid)
+    grid=frame
+    start=(175,652)
+    end=(170,560)
+    route=solve.astar(start,end,frame)
     if(route==False):
         print("No path")
         return 0
@@ -57,5 +44,6 @@ def main():
     ax.scatter(start[1],start[0])
     ax.scatter(end[1],end[0])
     plt.show()
+    
 if(__name__=="__main__"):
     main()
