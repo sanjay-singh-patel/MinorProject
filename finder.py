@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from grid import gridmaker
+import json
 import matplotlib.pyplot as plt
 from pathsolver import solver
 solve=solver()
