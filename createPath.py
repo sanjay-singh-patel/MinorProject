@@ -19,7 +19,7 @@ frame=cv2.bitwise_not(frame)
 
 def draw_route(frame, route):
     for r in route:
-        frame[r[0]][r[1]] = 255
+        frame[r[0]][r[1]] = 150
     return frame
 
 def generatePairs(doors):
@@ -42,7 +42,7 @@ def generatePaths(pairs):
 def generatePath(pair, solve):
     start = eval(pair[0])
     end = eval(pair[1])
-    print('checking')
+    #print('checking')
     
     route=solve.astar(start,end,frame)
     if(route==False):
