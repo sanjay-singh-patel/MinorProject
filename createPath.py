@@ -14,7 +14,7 @@ f.close()
 # print(doors)
 
 frame=cv2.imread("./images/dept.jpg")
-frame=cv2.resize(frame, (800,400))
+frame1=frame=cv2.resize(frame, (800,400))
 frame=cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
 th,frame=cv2.threshold(frame,200,255,cv2.THRESH_BINARY)
 frame=cv2.bitwise_not(frame)
@@ -102,19 +102,20 @@ def main():
     path = generatePath((current_location, dest_location), solve)
     if path == 0: 
         return
-    draw_doors(doors,frame)
-    draw_route(frame, path)
+    draw_doors(doors,frame1)
+    draw_route(frame1, path)
 
 main()
 print(doors)
+
 # pairs = generatePairs(doors)
 # paths = generatePaths(pairs)
 # createDataFrame(paths)
 
 # for path in paths.values():
     # draw_route(frame, path)
-frame=cv2.cvtColor(frame,cv2.COLOR_GRAY2RGBA)
 
-cv2.imshow( "frame", frame)
+
+cv2.imshow( "frame", frame1)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
