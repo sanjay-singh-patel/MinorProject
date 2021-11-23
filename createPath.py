@@ -25,8 +25,7 @@ def draw_doors(doors,frame):
         cv2.circle(frame, (eval(door)[1],eval(door)[0]), 5, (255,0,0))
 
 def draw_route(frame, route):
-    if route == 0: 
-        return
+    if route == 0: return
     for r in route:
         frame[r[0]][r[1]] = 150
     return frame
@@ -75,8 +74,6 @@ def createDataFrame(paths):
     dataframe = pd.DataFrame(df, index=None)
     dataframe.to_csv('Paths.csv')
     print(dataframe)
-    
-    
 
 def main():
     solve = solver()
