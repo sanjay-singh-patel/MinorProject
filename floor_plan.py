@@ -13,6 +13,7 @@ bottom_right_corner=[]
 doors={}
 
 def saveRooms(doors):
+  print("saving...")
   with open("Rooms.json", "w") as outfile:
       json.dump(doors, outfile)
 
@@ -22,7 +23,7 @@ def selectDoor(action, x, y, flags, *userdata):
     global doors
     # Mark the top left corner when left mouse button is pressed
     if action == cv2.EVENT_LBUTTONUP:
-        door = (x,y)
+        door = (y,x)
         cv2.circle(image, (x,y), 5, (255,0,0))
         ROOT.withdraw()
         # the input dialog
