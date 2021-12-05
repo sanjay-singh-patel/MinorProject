@@ -49,10 +49,10 @@ while k!=113:
   cv2.imshow("Window", image)
   k = cv2.waitKey(0)
   # If c is pressed, clear the window, using the dummy image
-  if (k == 99):
+  if k == 99:
     image= temp.copy()
     cv2.imshow("Window", image)
-  if (k == 115):
+  if k == 115:
     saveRooms(doors)
 
 cv2.destroyAllWindows()
