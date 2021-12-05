@@ -19,7 +19,7 @@ class solver:
         while heap:
             current=heapq.heappop(heap)[1]
             closed_list.add(current)
-            if(current==end):
+            if current==end:
                 data=[]
                 while current in parent:
                     data.append(current)

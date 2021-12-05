@@ -54,7 +54,7 @@ def generatePath(pair, solve):
     print('checking')
     
     route=solve.astar(start,end,frame)
-    if(route==False):
+    if route==False:
         print("No path")
         return 0
     route+=[start]
