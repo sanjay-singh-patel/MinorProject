@@ -19,8 +19,6 @@ def saveRooms(doors):
 
 # function which will be called on mouse input
 def selectDoor(action, x, y, flags, *userdata):
-    # Referencing global variables 
-    global doors
     # Mark the top left corner when left mouse button is pressed
     if action == cv2.EVENT_LBUTTONUP:
         door = (y,x)
