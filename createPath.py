@@ -3,7 +3,7 @@ import json
 import pandas as pd
 from pathsolver import solver
 
-f = open('Rooms.json',)
+f = open('Rooms.json')
 data = json.load(f)
 doors = []
 for i in data:
